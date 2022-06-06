@@ -20,7 +20,7 @@ export default function Search() {
                         </svg>
                         </InputGroup.Text>
                         <FormControl
-                            placeholder="Name or Type"
+                            placeholder="Enter name here"
                             aria-label="Search"
                             style={{ height: 40 }}
                             aria-describedby="basic-addon1"
