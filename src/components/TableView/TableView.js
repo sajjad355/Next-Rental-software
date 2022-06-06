@@ -10,7 +10,7 @@ export default function TableView(props) {
             <div className="">
                 <div style={{ marginRight: 20, border: '1px solid white', marginBottom: 10 }} className="TableDesign">
 
-                    <Table responsive="sm md xs lg xl" striped hover>
+                    <Table responsive="sm md xs lg xl" striped hover bordered>
                         <thead className="" style={{ backgroundColor: '#2621a0' }}>
                             <tr>
                                 {props.tableHeader.map((header, index) => (
@@ -32,7 +32,9 @@ export default function TableView(props) {
                                     <td>{data.name}</td>
                                     <td>{data.type}</td>
                                     <td>{data.availability === true ? <span style={{ color: 'green' }}>Available</span> : <span style={{ color: 'red' }}>Not Available</span>}</td>
-                                    <td>{data.needing_repair === true ? "Yes" : "No"}</td>
+                                    {/* <td>{data.needing_repair === true ? "Yes" : "No"}</td> */}
+                                    <td>{data.needing_repair === true ? <span style={{ color: 'red' }}>Yes</span> : <span style={{ color: 'green' }}>No</span>}</td>
+
                                     <td>{data.durability}</td>
                                     <td>{data.max_durability}</td>
                                     <td>{data.mileage === "" || data.mileage === null ? "N/A" : data.mileage}</td>

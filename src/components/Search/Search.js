@@ -10,6 +10,9 @@ export default function Search() {
     return (
         <div className="Search">
             <div className="center">
+                {/* <div className="" style={{ marginTop: 20, fontSize:'30px', background:'red' }}>
+                    <p>Rental Software</p>
+                </div> */}
                 <div className="float-right mt-4" style={{ marginRight: 20 }}>
                     <InputGroup className="mb-3">
                         <InputGroup.Text id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
