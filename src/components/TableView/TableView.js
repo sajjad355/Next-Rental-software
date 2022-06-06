@@ -31,7 +31,7 @@ export default function TableView(props) {
                                     <td>{index + 1}</td>
                                     <td>{data.name}</td>
                                     <td>{data.type}</td>
-                                    <td>{data.availability === true ? "Available" : "Not Available"}</td>
+                                    <td>{data.availability === true ? <span style={{ color: 'green' }}>Available</span> : <span style={{ color: 'red' }}>Not Available</span>}</td>
                                     <td>{data.needing_repair === true ? "Yes" : "No"}</td>
                                     <td>{data.durability}</td>
                                     <td>{data.max_durability}</td>
