@@ -4,6 +4,8 @@ import BookProduct from '../BookProduct/Booking'
 import ReturnProduct from '../ReturnProduct/Return'
 import TableView from '../TableView/TableView'
 import "../style.css"
+import ErrorBoundary from "../../utils/ErrorBoundary"
+
 
 export default function DataTable(props) {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,10 +22,12 @@ export default function DataTable(props) {
     return (
         <div className="App">
             <div className="">
-                <TableView
-                    searchKey={props.searchKey}
-                    tableHeader={tableHeader}
-                />
+                <ErrorBoundary>
+                    <TableView
+                        searchKey={props.searchKey}
+                        tableHeader={tableHeader}
+                    />
+                </ErrorBoundary>
             </div>
             <div className="mb-5 BookReturn">
                 <Button onClick={toggleModal} className="book" >Book</Button>

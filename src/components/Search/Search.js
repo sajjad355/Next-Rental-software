@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { InputGroup, FormControl } from "react-bootstrap";
 import "../style.css"
 import DataTable from '../../components/DataTable/DataTable'
+import ErrorBoundary from "../../utils/ErrorBoundary"
 
 
 export default function Search() {
@@ -28,9 +29,9 @@ export default function Search() {
                     </InputGroup>
                 </div>
                 <div>
-                    <DataTable
-                        searchKey={serarchTerm}
-                    />
+                    <ErrorBoundary>
+                        <DataTable searchKey={serarchTerm} />
+                    </ErrorBoundary>
                 </div>
             </div>
         </div >

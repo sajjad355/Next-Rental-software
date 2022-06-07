@@ -1,6 +1,8 @@
 import React from "react";
 import "../style.css"
 import { Table } from "react-bootstrap";
+import ErrorBoundary from "../../utils/ErrorBoundary"
+
 
 
 export default function TableView(props) {
