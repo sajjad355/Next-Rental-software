@@ -85,11 +85,11 @@ export default function BookProduct(props) {
                 contentLabel="My dialog"
             >
                 <Modal.Header>
-                    <div><span style={{ fontSize: 20, fontFamily: "Lucida Console", fontWeight: 'bold' }} >BOOK A PRODUCT</span></div>
+                    <div><span className="book-product" >BOOK A PRODUCT</span></div>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <div><span style={{ fontSize: 18, fontFamily: "Lucida Console" }} >SELECT PRODUCT</span><span style={{ color: 'red' }}>*</span></div>
+                    <div><span className="select-product">SELECT PRODUCT</span><span className="required">*</span></div>
 
                     <InputGroup className="mb-3">
                         <select
@@ -109,11 +109,10 @@ export default function BookProduct(props) {
                             ))}
                         </select>
                     </InputGroup>
-                    <br />
 
                     {/* Information Start */}
                     {JSON.parse(localStorage.getItem("data")).filter(product => product.name + "/" + product.code === productBooking).map(products => (
-                        <p style={{ fontSize: 22, fontFamily: "Lucida Console" }}>
+                        <p className="product-desc ">
                             <p>Name:&nbsp;{products.name}</p>
                             <p>Rental Period:&nbsp;{products.minimum_rent_period}</p>
                             <p>Mileage:&nbsp;{products.mileage === null ? "N/A" : products.mileage}</p>
@@ -124,24 +123,26 @@ export default function BookProduct(props) {
 
                     {/* Information End */}
 
-                    <span style={{ fontSize: 18, fontFamily: "Lucida Console" }} >FROM</span><span style={{ color: 'red' }}>*</span> &nbsp;
+                    <span className="input-title" >FROM</span><span className="required">*</span> &nbsp;
                     <Form.Control type="date" value={fromDate} min={new Date().toISOString().split("T")[0]}
 
                         onChange={(e) => {
                             setFromdate(e.target.value);
                         }} />
-                    <br />
 
-                    <span style={{ fontSize: 18, fontFamily: "Lucida Console" }} >TO</span><span style={{ color: 'red' }}>*</span>&nbsp;
-                    <Form.Control type="date" value={toDate} onChange={(e) => {
-                        setToDate(e.target.value);
-                    }} />
+                    <p className="input-title to-margin">
+                        <span>TO</span>
+                        <span className="required">*</span>
+                        &nbsp;
+                        <Form.Control type="date" value={toDate} onChange={(e) => {
+                            setToDate(e.target.value);
+                        }} />
+                    </p>
                 </Modal.Body>
-                <br /><br />
                 <Modal.Footer>
-                    <Button onClick={toggleModalBookingValue} style={{ width: 108, fontSize: 18, fontFamily: "Lucida Console", height: 40, marginBottom: 10, backgroundColor: '#2621a0', color: 'white' }}>Yes</Button>
+                    <Button onClick={toggleModalBookingValue} className="yes-button">Yes</Button>
                     &nbsp;
-                    <Button variant="danger" onClick={toggleModal} style={{ width: 108, marginTop: -2, fontSize: 18, fontFamily: "Lucida Console", height: 40, color: 'white' }}>No</Button>
+                    <Button variant="danger" onClick={toggleModal} className="no-button">No</Button>
 
                 </Modal.Footer>
             </Modal>
@@ -155,27 +156,27 @@ export default function BookProduct(props) {
                 contentLabel="My dialog"
             >
                 <Modal.Header>
-                    <div><span style={{ fontSize: 20, fontFamily: "Lucida Console", fontWeight: 'bold' }} >BOOK A PRODUCT</span></div>
+                    <div><span className="book-product" >BOOK A PRODUCT</span></div>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <span style={{ fontSize: 23, fontFamily: "Lucida Console" }}>Your Estimated Price</span>($)<input
+                    <span className="product-desc">Your Estimated Price</span>($)<input
                         type="number"
                         placeholder="Enter Amount"
                         value={amountPreview}
-                        style={{ border: "0", fontSize: 22, fontFamily: "Lucida Handwriting", background: 'white', fontWeight: 'bold', marginBottom: 10 }}
+                        className="estimated-price"
                         disabled
 
                     />
-                    <br />
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <span style={{ fontsize: 22, fontFamily: "Lucida Console" }}>Do you want to procedure?</span> <br /><br />
+                    <span className="is-confirm">Do you want to procedure?</span>
 
-                    <Button onClick={toggleModalBookingValueComplted} style={{ width: 58, fontSize: 18, fontFamily: "Lucida Console", height: 37, marginBottom: 10, backgroundColor: '#2621a0', color: 'white' }}>Yes</Button>
+
+                    <Button onClick={toggleModalBookingValueComplted} className="yes-button-confirm">Yes</Button>
                     &nbsp;
-                    <Button variant="danger" onClick={toggleBookingValueCancel} style={{ width: 58, marginTop: -2, fontSize: 18, fontFamily: "Lucida Console", height: 37, color: 'white' }}>No</Button>
+                    <Button variant="danger" onClick={toggleBookingValueCancel} className="no-button-confirm">No</Button>
                 </Modal.Footer>
             </Modal>
             {/* Estimated Price After Booking Product */}
@@ -187,15 +188,15 @@ export default function BookProduct(props) {
                 contentLabel="My dialog"
             >
                 <Modal.Header>
-                    <span style={{ fontFamily: "Lucida Handwriting", fontSize: 22 }}>CONGRATULATIONS!</span><br /><br />
+                    <span className="congrats">CONGRATULATIONS!</span>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <span style={{ fontsize: 22, fontFamily: "Lucida Console" }}>YOU HAVE BOOKED THIS PRODUCT!</span> <br />
+                    <span className="product-desc">YOU HAVE BOOKED THIS PRODUCT!</span>
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button onClick={toggleModalBookingValueCompltedFinal} style={{ fontSize: 18, fontFamily: "Lucida Console", width: 150, height: 40, background: '#2621a0', color: 'white' }}>Done</Button><br />
+                    <Button onClick={toggleModalBookingValueCompltedFinal} className="done">Done</Button>
                 </Modal.Footer>
             </Modal>
             {/* Booking Product Confirmation */}

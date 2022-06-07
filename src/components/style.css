@@ -32,8 +32,19 @@
     text-align: "center";
 }
 
-.TableDesignT {
-    box-shadow: 0 0 20px rgb(0 0 0 / 36%);
+.table-design {
+    margin-right: 20px; 
+    border: 1px solid white;
+    margin-bottom: 10px;
+}
+.header-background{
+    background-color: #2621a0;
+}
+
+th{
+    font-size: 18px; 
+    color: white; 
+    font-family: "Lucida Console";
 }
 
 .search:focus {
@@ -44,3 +55,119 @@
     width: 10px;
     height: 100px;
 }
+.search{
+    height:40;
+}
+.BookReturn{
+    margin-right: 21px;
+    display: flex;
+    justify-content: flex-end;
+}
+.book{
+    width: 85px;
+}
+.return{
+    margin-left: 5px;
+    width: 85px;
+}
+.book-product{
+    font-size: 20px;
+    font-family: "Lucida Console";
+    font-weight: bold;
+}
+.select-product{
+    font-size: 18px;
+    font-family: "Lucida Console";
+}
+.search-root{
+    margin-right: 20px;
+}
+.required{
+    color:red;
+}
+.product-desc{
+    font-size: 22px; 
+    font-family: "Lucida Console";
+}
+.input-title{
+    font-size: 18px;
+    font-family: "Lucida Console";
+}
+.yes-button{
+    width: 108px;
+    font-size: 18px;
+    font-family: "Lucida Console"; 
+    height: 40px; 
+    margin-bottom: 10px; 
+    background-color: #2621a0; 
+    color: white;
+}
+.no-button{
+    width: 108px; 
+    margin-top: -2px;
+    font-size: 18px; 
+    font-family: "Lucida Console"; 
+    height: 40px; 
+    color: white;
+}
+.estimated-price{
+    border:none;
+    font-size: 22px;
+    font-family: "Lucida Handwriting"; 
+    background-color: white; 
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.is-confirm{
+    font-size: 22px; 
+    /* font-family: "Lucida Console"; */
+    font-weight: normal;
+}
+.yes-button-confirm{
+    /* width: 108px; */
+    font-size: 18px;
+    font-family: "Lucida Console"; 
+    height: 40px; 
+    margin-bottom: 10px; 
+    background-color: #2621a0; 
+    color: white;
+}
+.no-button-confirm{
+    width: 50px; 
+    margin-top: -2px;
+    font-size: 18px; 
+    font-family: "Lucida Console"; 
+    height: 40px; 
+    color: white;
+}
+.congrats{
+    font-family: "Lucida Handwriting";
+    font-size: 22px; 
+}
+
+.done{
+    font-size: 18px; 
+    font-family: "Lucida Console";
+    width: 150px;
+    height: 40px; 
+    background-color: #2621a0;
+    color: white;
+}
+.success{
+    color: green;
+}
+.mileage{
+    width: 100%;
+}
+.return-confirm{
+font-size: 18px; 
+font-family: "Lucida Console"; 
+width: 120px; 
+height: 41px; 
+background: #2621a0; 
+color: white; 
+}
+.to-margin{
+    margin-top:20px;
+}
+

@@ -25,9 +25,9 @@ export default function DataTable(props) {
                     tableHeader={tableHeader}
                 />
             </div>
-            <div className="mb-5" style={{ marginRight: 21, display: 'flex', justifyContent: 'flex-end' }}>
-                <Button onClick={toggleModal} style={{ width: 85 }} >Book</Button>
-                <Button onClick={toggleModalReturn} style={{ marginLeft: 5, width: 85 }} variant="danger">Return</Button>
+            <div className="mb-5 BookReturn">
+                <Button onClick={toggleModal} className="book" >Book</Button>
+                <Button onClick={toggleModalReturn} className="return" variant="danger">Return</Button>
             </div>
             <div>
                 {isOpen ? <BookProduct status={isOpen} /> : ""}

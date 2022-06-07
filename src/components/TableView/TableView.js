@@ -8,13 +8,13 @@ export default function TableView(props) {
     return (
         <div className="App">
             <div className="">
-                <div style={{ marginRight: 20, border: '1px solid white', marginBottom: 10 }} className="TableDesign">
+                <div className="table-design">
 
                     <Table responsive="sm md xs lg xl" striped hover bordered>
-                        <thead className="" style={{ backgroundColor: '#2621a0' }}>
+                        <thead className="header-background">
                             <tr>
                                 {props.tableHeader.map((header, index) => (
-                                    <th style={{ fontsize: 21, color: "white", fontFamily: "Lucida Console" }}>{header}</th>
+                                    <th>{header}</th>
                                 ))}
                             </tr>
                         </thead>
@@ -31,9 +31,9 @@ export default function TableView(props) {
                                     <td>{index + 1}</td>
                                     <td>{data.name}</td>
                                     <td>{data.type}</td>
-                                    <td>{data.availability === true ? <span style={{ color: 'green' }}>Available</span> : <span style={{ color: 'red' }}>Not Available</span>}</td>
+                                    <td>{data.availability === true ? <span className="success">Available</span> : <span className="required">Not Available</span>}</td>
                                     {/* <td>{data.needing_repair === true ? "Yes" : "No"}</td> */}
-                                    <td>{data.needing_repair === true ? <span style={{ color: 'red' }}>Yes</span> : <span style={{ color: 'green' }}>No</span>}</td>
+                                    <td>{data.needing_repair === true ? <span className="required">Yes</span> : <span className="success">No</span>}</td>
 
                                     <td>{data.durability}</td>
                                     <td>{data.max_durability}</td>

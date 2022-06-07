@@ -74,11 +74,11 @@ export default function ReturnProduct(props) {
                 contentLabel="My dialog"
             >
                 <Modal.Header>
-                    <div><span style={{ fontSize: 20, fontFamily: "Lucida Console", fontWeight: 'bold' }} >RETURN PRODUCT</span></div>
+                    <div><span className="book-product" >RETURN PRODUCT</span></div>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <div><span style={{ fontSize: 19, fontFamily: "Lucida Console" }} >SELECT PRODUCT</span><span style={{ color: 'red' }}>*</span></div>
+                    <div><span className="select-product" >SELECT PRODUCT</span><span className="required">*</span></div>
 
                     <InputGroup className="mb-3">
                         <select
@@ -97,11 +97,10 @@ export default function ReturnProduct(props) {
                             ))}
                         </select>
                     </InputGroup>
-                    <br />
 
                     {/* Information Start */}
                     {JSON.parse(localStorage.getItem("data")).filter(allProduct => allProduct.name + "/" + allProduct.code === product).map(products => (
-                        <p style={{ fontSize: 22, fontFamily: "Lucida Console" }}>
+                        <p className="product-desc">
                             <p>Name:&nbsp;{products.name}</p>
                             <p>Rental Period:&nbsp;{products.minimum_rent_period}</p>
                             <p>Mileage:&nbsp;{products.mileage === null ? "N/A" : products.mileage}</p>
@@ -110,25 +109,23 @@ export default function ReturnProduct(props) {
                     ))}
                     {/* Information End */}
 
-                    <div><span style={{ fontSize: 19, fontFamily: "Lucida Console" }} >USED MILEAGE</span><span style={{ color: 'red' }}>*</span></div>
+                    <div><span className="input-title">USED MILEAGE</span><span className="required">*</span></div>
                     <input
                         type="number"
                         placeholder="Enter Mileage"
                         value={amount}
                         min="0"
-                        style={{ width: '100%' }}
-                        className="form-control"
+                        className="form-control mileage"
                         onChange={(e) => {
                             setAmount(e.target.value);
                         }}
                     />
-                    <br />
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button onClick={toggleModalReturnValue} style={{ width: 58, fontSize: 18, fontFamily: "Lucida Console", height: 40, marginBottom: 10, backgroundColor: '#2621a0', color: 'white' }}>Yes</Button>
+                    <Button onClick={toggleModalReturnValue} className="yes-button">Yes</Button>
                     &nbsp;
-                    <Button variant="danger" onClick={toggleModalReturn} style={{ width: 58, marginTop: -2, fontSize: 18, fontFamily: "Lucida Console", height: 40, color: 'white' }}>No</Button>
+                    <Button variant="danger" onClick={toggleModalReturn} className="no-button">No</Button>
                 </Modal.Footer>
             </Modal>
             {/* Return Product Initialize */}
@@ -141,22 +138,22 @@ export default function ReturnProduct(props) {
             >
 
                 <Modal.Header>
-                    <span style={{ fontFamily: "Lucida Handwriting", fontSize: 22 }}> RETURN A PRODUCT!</span> <br /> <br />
+                    <span className="book-product"> RETURN A PRODUCT!</span>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <span style={{ fontsize: 22, fontFamily: "Lucida Console" }}>YOU ARE GOING TO RETUEN PRODUCT...</span> <br /><br />
-                    <span style={{ fontSize: 20, fontFamily: "Lucida Console" }}>Your Total Price is</span>($)
+                    <span className="input-title">YOU ARE GOING TO RETUEN PRODUCT...</span>
+                    <span className="input-title">Your Total Price is</span>($)
                     <input
                         value={amountPreview}
-                        style={{ border: "0", fontSize: 22, fontFamily: "Lucida Handwriting", background: 'white', fontWeight: 'bold', marginBottom: 10 }}
+                        className="estimated-price"
                         disabled
-                    /><br />
+                    />
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <span style={{ fontsize: 22, fontFamily: "Lucida Console" }}>DO you want to procedure?</span> <br /><br />
-                    <Button onClick={toggleModalReturnValueFinal} style={{ fontSize: 18, fontFamily: "Lucida Console", width: 120, height: 41, background: '#2621a0', color: 'white' }}>Confirm</Button><br />
+                    <span className="is-confirm">Do you want to procedure?</span>
+                    <Button onClick={toggleModalReturnValueFinal} className="return-confirm" style={{ fontSize: 18, fontFamily: "Lucida Console", width: 120, height: 41, background: '#2621a0', color: 'white' }}>Confirm</Button>
                 </Modal.Footer>
             </Modal>
             {/* Return Product Confirmation */}
