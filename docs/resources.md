@@ -6,3 +6,4 @@ loglevel used to log all the errors
 Modal used as a POP up
 ## Material-UI
 Material-UI used for Table design
+## Jest Framework
