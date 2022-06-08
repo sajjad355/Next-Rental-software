@@ -1,6 +1,6 @@
-import Search from '../../components/Search/Search'
 import Data from '../../../src/data/data.json'
 import ErrorBoundary from "../../utils/ErrorBoundary"
+import DataTable from "../../components/DataTable/DataTable"
 
 
 function Products() {
@@ -8,7 +8,7 @@ function Products() {
         <div className="App">
             {localStorage.getItem('data') ? "" : localStorage.setItem('data', JSON.stringify(Data))}
             <ErrorBoundary>
-                <Search />
+                <DataTable />
             </ErrorBoundary>
         </div>
     );

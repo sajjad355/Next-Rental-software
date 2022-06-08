@@ -10,6 +10,8 @@ export default function ReturnProduct(props) {
     const [repair, setRepair] = useState("");
     const [rentPeriod, setRentPeriod] = useState("");
     const [returnModal, setReturnModal] = useState(true);
+    const [returnError, setReturnError] = useState("");
+
 
     useEffect(() => {
         setReturnModal(props.status);
@@ -33,6 +35,8 @@ export default function ReturnProduct(props) {
             if (dataObj[i].code === code) {
                 console.log("Update")
                 dataObj[i].availability = true;
+                dataObj[i].mileage = dataObj[i].mileage === null ? amount : parseInt(dataObj[i].mileage) + parseInt(amount);
+
                 // return;
                 break;
             }
@@ -58,9 +62,10 @@ export default function ReturnProduct(props) {
             }
             setRepair(a[0].needing_repair === "false" ? "No" : "Yes");
             setRentPeriod(a[0].minimum_rent_period);
+            setReturnError("")
         }
         else {
-            alert("Please Fill all the required Fields");
+            setReturnError("Please Fill all the required Fields")
         }
     }
 
@@ -120,6 +125,7 @@ export default function ReturnProduct(props) {
                             setAmount(e.target.value);
                         }}
                     />
+                    <p className="required"> {returnError}</p>
                 </Modal.Body>
 
                 <Modal.Footer>
@@ -153,7 +159,7 @@ export default function ReturnProduct(props) {
 
                 <Modal.Footer>
                     <span className="is-confirm">Do you want to procedure?</span>
-                    <Button onClick={toggleModalReturnValueFinal} className="return-confirm" style={{ fontSize: 18, fontFamily: "Lucida Console", width: 120, height: 41, background: '#2621a0', color: 'white' }}>Confirm</Button>
+                    <Button onClick={toggleModalReturnValueFinal} className="return-confirm">Confirm</Button>
                 </Modal.Footer>
             </Modal>
             {/* Return Product Confirmation */}

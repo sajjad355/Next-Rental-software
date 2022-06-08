@@ -10,9 +10,7 @@ export default function BookProduct(props) {
     const [toDate, setToDate] = useState("");
     const [bookModal, setBookModal] = useState(true);
     const [productId, setProductId] = useState("");
-
-
-
+    const [bookError, setBookError] = useState("");
 
     function toggleModal() {
         setBookModal(false);
@@ -25,7 +23,6 @@ export default function BookProduct(props) {
         setIsOpenBookingvalue(!isOpenBookingValue);
     }
     function toggleModalBookingValueCompltedFinal() {
-        console.log("Final Start:=")
 
         setIsOpenBookingvalueCompleted(!isOpenBookingValueCompleted);
         const code = productBooking.split('/').pop();
@@ -33,12 +30,10 @@ export default function BookProduct(props) {
 
         var dataObj = JSON.parse(localStorage.getItem("data"));
         for (var i = 0; i < dataObj.length; i++) {
-            // console.log(dataObj[i].code)
             if (dataObj[i].code === code) {
                 console.log("Update")
                 dataObj[i].availability = false;
                 dataObj[i].returnPrice = amountPreview;
-                // return;
                 break;
             }
         }
@@ -59,19 +54,25 @@ export default function BookProduct(props) {
             const diffTime = Math.abs(date2 - date1);
             const dayDiff = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             if (fromDate > toDate) {
-                alert("To Date must be Greater than From Date!")
+                setBookError("To Date must be Greater than From Date!")
                 setIsOpenBookingvalue(isOpenBookingValue);
             }
             else {
-                if (dayDiff >= a[0].minimum_rent_period)
+                if (dayDiff >= a[0].minimum_rent_period) {
                     setIsOpenBookingvalue(!isOpenBookingValue);
-                else
-                    alert("You have to Rent this for minumum " + a[0].minimum_rent_period + " Days");
+                    setBookError("");
+
+                }
+                else {
+                    setBookError("You have to Rent this for minumum " + a[0].minimum_rent_period + " Days")
+
+                }
             }
             setamountPreview(a[0].price * dayDiff);
         }
         else {
-            alert("Please Fill all the required Fields");
+            setBookError("Please Fill all the required Fields")
+
         }
     }
     return (
@@ -112,7 +113,7 @@ export default function BookProduct(props) {
 
                     {/* Information Start */}
                     {JSON.parse(localStorage.getItem("data")).filter(product => product.name + "/" + product.code === productBooking).map(products => (
-                        <p className="product-desc ">
+                        <p className="product-desc">
                             <p>Name:&nbsp;{products.name}</p>
                             <p>Rental Period:&nbsp;{products.minimum_rent_period}</p>
                             <p>Mileage:&nbsp;{products.mileage === null ? "N/A" : products.mileage}</p>
@@ -138,6 +139,8 @@ export default function BookProduct(props) {
                             setToDate(e.target.value);
                         }} />
                     </p>
+                    <p className="required"> {bookError}</p>
+
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={toggleModalBookingValue} className="yes-button">Yes</Button>
@@ -160,7 +163,7 @@ export default function BookProduct(props) {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <span className="product-desc">Your Estimated Price</span>($)<input
+                    <span className="price-info">Your Estimated Price</span>($)<input
                         type="number"
                         placeholder="Enter Amount"
                         value={amountPreview}
@@ -171,7 +174,7 @@ export default function BookProduct(props) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <span className="is-confirm">Do you want to procedure?</span>
+                    <span className="">Do you want to procedure?</span>
 
 
                     <Button onClick={toggleModalBookingValueComplted} className="yes-button-confirm">Yes</Button>
@@ -192,7 +195,7 @@ export default function BookProduct(props) {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <span className="product-desc">YOU HAVE BOOKED THIS PRODUCT!</span>
+                    <span className="price-info">YOU HAVE BOOKED THIS PRODUCT!</span>
                 </Modal.Body>
 
                 <Modal.Footer>
