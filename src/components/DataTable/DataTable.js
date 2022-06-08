@@ -25,7 +25,6 @@ export default function DataTable(props) {
                     <TableView />
                 </ErrorBoundary>
             </div>
-            <br></br>
             <div className="mb-5 BookReturn">
                 <Button onClick={toggleModal} className="book" >Book</Button>
                 <Button onClick={toggleModalReturn} className="return" variant="danger">Return</Button>
@@ -41,6 +40,11 @@ export default function DataTable(props) {
                     <ErrorBoundary>
                         <ReturnProduct status={isOpenReturn} />
                     </ErrorBoundary> : ""}
+
+            </div>
+            <div className="">
+                <p className="copy-right">©2022 Sajjadur Rahman</p>
+                <p className="email">sajjadurrahman3434@gmail.com</p>
             </div>
         </div >
     );

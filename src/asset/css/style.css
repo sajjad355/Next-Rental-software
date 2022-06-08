@@ -59,6 +59,7 @@ th{
     margin-right: 21px;
     display: flex;
     justify-content: flex-end;
+    margin-top: 10px;
 }
 .book{
     width: 85px;
@@ -266,4 +267,10 @@ color: white;
     background-color: red!important;
   }
   
+  .email{
+      margin-top: -15px;
+  }
+  .copy-right{
+    margin-top: -35px;
+  }
 
