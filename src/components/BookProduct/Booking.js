@@ -55,7 +55,7 @@ export default function BookProduct(props) {
             const date2 = new Date(fromDate);
             // const diffTime = Math.abs(date2 - date1);
             // const dayDiff = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            const dayDiff = dayDifferenceCalculate(date1, toDate);
+            const dayDiff = dayDifferenceCalculate(date1, date2);
             if (fromDate > toDate) {
                 setBookError("To Date must be Greater than From Date!")
                 setIsOpenBookingvalue(isOpenBookingValue);
