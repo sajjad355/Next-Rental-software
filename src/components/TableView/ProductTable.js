@@ -64,7 +64,6 @@ const ProductTable = () => {
                             <FormControl
                                 placeholder="Enter product name"
                                 aria-label="Search"
-                                // className="search"
                                 aria-describedby="basic-addon1"
                                 onChange={(e) => {
                                     setSearchTerm(e.target.value);
