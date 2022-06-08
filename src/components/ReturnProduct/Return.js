@@ -95,23 +95,28 @@ export default function ReturnProduct(props) {
                         >
                             <option value="" disabled>-- Product --</option>
 
-                            {JSON.parse(localStorage.getItem("data")).filter((c) => c.availability === false).map((val) => (
-                                <option text={val.code}>
-                                    {val.name}/{val.code}
-                                </option>
-                            ))}
+                            {
+                                localStorage.getItem("data") ?
+                                    JSON.parse(localStorage.getItem("data")).filter((c) => c.availability === false).map((val) => (
+                                        <option text={val.code}>
+                                            {val.name}/{val.code}
+                                        </option>
+                                    )) : ""
+                            }
                         </select>
                     </InputGroup>
 
                     {/* Information Start */}
-                    {JSON.parse(localStorage.getItem("data")).filter(allProduct => allProduct.name + "/" + allProduct.code === product).map(products => (
-                        <p className="product-desc">
-                            <p>Name:&nbsp;{products.name}</p>
-                            <p>Rental Period:&nbsp;{products.minimum_rent_period}</p>
-                            <p>Mileage:&nbsp;{products.mileage === null ? "N/A" : products.mileage}</p>
-                            <p>Repair Needed:&nbsp;{products.needing_repair === true ? "Yes" : "No"}</p>
-                        </p>
-                    ))}
+                    {
+                        (localStorage.getItem("data")) ? JSON.parse(localStorage.getItem("data")).filter(allProduct => allProduct.name + "/" + allProduct.code === product).map(products => (
+                            <p className="product-desc">
+                                <p>Name:&nbsp;{products.name}</p>
+                                <p>Rental Period:&nbsp;{products.minimum_rent_period}</p>
+                                <p>Mileage:&nbsp;{products.mileage === null ? "N/A" : products.mileage}</p>
+                                <p>Repair Needed:&nbsp;{products.needing_repair === true ? "Yes" : "No"}</p>
+                            </p>
+                        )) : ""
+                    }
                     {/* Information End */}
 
                     <div><span className="input-title">USED MILEAGE</span><span className="required">*</span></div>
