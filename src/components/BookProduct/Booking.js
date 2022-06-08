@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Form, Button, InputGroup } from "react-bootstrap";
+import { dayDifferenceCalculate } from "../../utils/dayDifferenceCalculate";
+
 
 export default function BookProduct(props) {
     const [isOpenBookingValue, setIsOpenBookingvalue] = useState(false);
@@ -51,8 +53,9 @@ export default function BookProduct(props) {
             var a = JSON.parse(localStorage.getItem("data")).filter(item => item.name + "/" + item.code === productBooking)
             const date1 = new Date(toDate);
             const date2 = new Date(fromDate);
-            const diffTime = Math.abs(date2 - date1);
-            const dayDiff = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            // const diffTime = Math.abs(date2 - date1);
+            // const dayDiff = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            const dayDiff = dayDifferenceCalculate(date1, toDate);
             if (fromDate > toDate) {
                 setBookError("To Date must be Greater than From Date!")
                 setIsOpenBookingvalue(isOpenBookingValue);
