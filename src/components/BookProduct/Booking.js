@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Modal, Form, Button, InputGroup } from "react-bootstrap";
 import { dayDifferenceCalculate } from "../../utils/dayDifferenceCalculate";
+import { updateProducts } from "../../utils/localStroageProduct"
+
 
 
 export default function BookProduct(props) {
@@ -33,15 +35,14 @@ export default function BookProduct(props) {
         var dataObj = JSON.parse(localStorage.getItem("data"));
         for (var i = 0; i < dataObj.length; i++) {
             if (dataObj[i].code === code) {
-                console.log("Update")
                 dataObj[i].availability = false;
                 dataObj[i].returnPrice = amountPreview;
                 break;
             }
         }
         localStorage.removeItem("data");
-        { localStorage.setItem('data', JSON.stringify(dataObj)) }
-        console.log(JSON.stringify(dataObj))
+        { updateProducts(dataObj) }
+
         window.location.reload();
     }
 

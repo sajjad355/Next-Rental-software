@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, InputGroup } from "react-bootstrap";
+import { updateProducts } from "../../utils/localStroageProduct"
+
 
 export default function ReturnProduct(props) {
     const [isOpenReturn, setIsOpenReturn] = useState(false);
@@ -42,7 +44,8 @@ export default function ReturnProduct(props) {
             }
         }
         localStorage.removeItem("data");
-        { localStorage.setItem('data', JSON.stringify(dataObj)) }
+        { updateProducts(dataObj) }
+
         window.location.reload();
     }
     function toggleModalReturnValue() {
