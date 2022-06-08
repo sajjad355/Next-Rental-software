@@ -3,7 +3,6 @@ import { ErrorLog } from "../helper/log";
 
 
 export const saveProducts = () => {
-    console.log("Save Product")
 
     try {
         if (localStorage.getItem('data')) { }
@@ -16,10 +15,8 @@ export const saveProducts = () => {
 };
 
 export const updateProducts = (dataObj) => {
-    console.log("update Product")
 
     try {
-        console.log(dataObj)
         { localStorage.setItem('data', JSON.stringify(dataObj)) }
 
     } catch (err) {

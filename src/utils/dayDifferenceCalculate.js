@@ -15,7 +15,6 @@ export const dayDifferenceCalculate = (endDate, startDate) => {
             "Invalid Start or End Date"
         );
     }
-    console.log(dayDiff)
 
     return dayDiff;
 };

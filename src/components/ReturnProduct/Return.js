@@ -33,9 +33,7 @@ export default function ReturnProduct(props) {
 
         var dataObj = JSON.parse(localStorage.getItem("data"));
         for (var i = 0; i < dataObj.length; i++) {
-            // console.log(dataObj[i].code)
             if (dataObj[i].code === code) {
-                console.log("Update")
                 dataObj[i].availability = true;
                 dataObj[i].mileage = dataObj[i].mileage === null ? amount : parseInt(dataObj[i].mileage) + parseInt(amount);
 
@@ -57,7 +55,6 @@ export default function ReturnProduct(props) {
             const code = product.split('/').pop();
             var dataObj = JSON.parse(localStorage.getItem("data"));
             for (var i = 0; i < dataObj.length; i++) {
-                // console.log(dataObj[i].code)
                 if (dataObj[i].code === code) {
                     setamountPreview(dataObj[i].returnPrice)
                     break;
