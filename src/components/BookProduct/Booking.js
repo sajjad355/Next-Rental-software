@@ -54,17 +54,18 @@ export default function BookProduct(props) {
             var a = JSON.parse(localStorage.getItem("data")).filter(item => item.name + "/" + item.code === productBooking)
             const date1 = new Date(toDate);
             const date2 = new Date(fromDate);
-            // const diffTime = Math.abs(date2 - date1);
-            // const dayDiff = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             const dayDiff = dayDifferenceCalculate(date1, date2);
             if (fromDate > toDate) {
                 setBookError("To Date must be Greater than From Date!")
                 setIsOpenBookingvalue(isOpenBookingValue);
             }
             else {
-                if (dayDiff >= a[0].minimum_rent_period) {
+                if (dayDiff >= a[0].minimum_rent_period && a[0].price) {
                     setIsOpenBookingvalue(!isOpenBookingValue);
                     setBookError("");
+                    setamountPreview(
+                        a[0].price * dayDiff
+                    );
 
                 }
                 else {
@@ -72,7 +73,6 @@ export default function BookProduct(props) {
 
                 }
             }
-            setamountPreview(a[0].price * dayDiff);
         }
         else {
             setBookError("Please Fill all the required Fields")
