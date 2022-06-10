@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Form, Button, InputGroup } from "react-bootstrap";
 import { dayDifferenceCalculate } from "../../utils/dayDifferenceCalculate";
-import { updateProducts } from "../../utils/localStroageProduct"
+import { saveProducts } from "../../utils/localStroageProduct"
 
 
 
@@ -41,7 +41,7 @@ export default function BookProduct(props) {
             }
         }
         localStorage.removeItem("data");
-        { updateProducts(dataObj) }
+        { saveProducts(dataObj) }
 
         window.location.reload();
     }

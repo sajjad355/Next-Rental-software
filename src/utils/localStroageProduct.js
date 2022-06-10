@@ -2,23 +2,18 @@ import Data from "../data/data.json"
 import { ErrorLog } from "../helper/log";
 
 
-export const saveProducts = () => {
+export const saveProducts = (dataObj) => {
 
     try {
-        if (localStorage.getItem('data')) { }
-        else {
-            localStorage.setItem('data', JSON.stringify(Data))
+        if (dataObj) {
+            localStorage.setItem('data', JSON.stringify(dataObj))
         }
-    } catch (err) {
-        ErrorLog("Save Error:" + err);
-    }
-};
-
-export const updateProducts = (dataObj) => {
-
-    try {
-        { localStorage.setItem('data', JSON.stringify(dataObj)) }
-
+        else {
+            if (localStorage.getItem('data')) { }
+            else {
+                localStorage.setItem('data', JSON.stringify(Data))
+            }
+        }
     } catch (err) {
         ErrorLog("Save Error:" + err);
     }

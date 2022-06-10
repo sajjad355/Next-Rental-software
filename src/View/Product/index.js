@@ -2,12 +2,17 @@ import Data from '../../../src/data/data.json'
 import ErrorBoundary from "../../utils/ErrorBoundary"
 import DataTable from "../../components/DataTable/DataTable"
 import { saveProducts } from "../../utils/localStroageProduct"
+import React, { useState, useEffect } from "react";
+
+
 
 
 function Products() {
+    const [dataObj, setDataObj] = useState("");
+
     return (
         <div className="App">
-            {saveProducts()}
+            {saveProducts(dataObj)}
             <ErrorBoundary>
                 <DataTable />
             </ErrorBoundary>

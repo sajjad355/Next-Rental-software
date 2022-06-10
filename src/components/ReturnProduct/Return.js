@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, InputGroup } from "react-bootstrap";
-import { updateProducts } from "../../utils/localStroageProduct"
+import { saveProducts } from "../../utils/localStroageProduct"
 
 
 export default function ReturnProduct(props) {
@@ -42,7 +42,7 @@ export default function ReturnProduct(props) {
             }
         }
         localStorage.removeItem("data");
-        { updateProducts(dataObj) }
+        { saveProducts(dataObj) }
 
         window.location.reload();
     }
