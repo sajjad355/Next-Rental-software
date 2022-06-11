@@ -16,9 +16,9 @@ it('renders without crashing', () => {
     );
 });
 
-// it('should match snapshot', () => {
-//     const tree = renderer
-//         .create(<ReturnModal />)
-//         .toJSON();
-//     expect(tree).toMatchSnapshot();
-// });
+it('should match snapshot', () => {
+    const tree = renderer
+        .create(<ReturnModal />)
+        .toJSON();
+    expect(tree).toMatchSnapshot();
+});

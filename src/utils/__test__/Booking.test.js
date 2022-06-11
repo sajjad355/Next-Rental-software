@@ -16,12 +16,12 @@ it('renders without crashing', () => {
     );
 });
 
-// it('should match snapshot', () => {
-//     const tree = renderer
-//         .create(<BookingModal />)
-//         .toJSON();
-//     expect(tree).toMatchSnapshot();
-// });
+it('should match snapshot', () => {
+    const tree = renderer
+        .create(<BookingModal />)
+        .toJSON();
+    expect(tree).toMatchSnapshot();
+});
 
 
 
