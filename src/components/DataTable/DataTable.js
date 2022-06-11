@@ -11,6 +11,8 @@ export default function DataTable(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenReturn, setIsOpenReturn] = useState(false);
 
+    useEffect(() => {
+    }, []);
 
     function toggleModal() {
         setIsOpen(true);
