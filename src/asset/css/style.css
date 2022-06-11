@@ -83,6 +83,7 @@ th{
 }
 .search-root{
     margin-right: 20px;
+    padding-top: 50px;
 }
 .required{
     color:red;
@@ -292,5 +293,10 @@ color: white;
 .inner
 {
     display: inline-block;
+}
+.image{
+    height:90px;
+    margin-bottom: 30px;
+    margin-left: 20px;
 }
 

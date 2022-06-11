@@ -9,6 +9,9 @@ import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
 import { InputGroup, FormControl } from "react-bootstrap";
+import logo from "../../asset/images/logo.png"
+
+
 
 
 
@@ -54,6 +57,10 @@ const ProductTable = () => {
 
     return (
         <>
+            <div className="float-left">
+                <img src={logo} className="image"></img>
+            </div>
+
             <div>
                 <span>
                     <div className="float-right mt-3 search-root">
