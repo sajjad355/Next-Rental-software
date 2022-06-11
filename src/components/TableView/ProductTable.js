@@ -18,7 +18,7 @@ const ProductTable = () => {
     );
 
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [rowsPerPage, setRowsPerPage] = React.useState(8);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -137,7 +137,7 @@ const ProductTable = () => {
                     </Table>
                 </TableContainer>
                 <TablePagination
-                    rowsPerPageOptions={[10, 20, 30]}
+                    rowsPerPageOptions={[5, 10, 20]}
                     component="div"
                     count={products.length}
                     rowsPerPage={rowsPerPage}
