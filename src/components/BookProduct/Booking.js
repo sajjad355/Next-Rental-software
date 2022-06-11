@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Form, Button, InputGroup } from "react-bootstrap";
 import { dayDifferenceCalculate } from "../../utils/dayDifferenceCalculate";
 import { saveProducts } from "../../utils/localStroageProduct"
@@ -15,6 +15,9 @@ export default function BookProduct(props) {
     const [bookModal, setBookModal] = useState(true);
     const [productId, setProductId] = useState("");
     const [bookError, setBookError] = useState("");
+
+    useEffect(() => {
+    }, []);
 
     function toggleModal() {
         setBookModal(false);
