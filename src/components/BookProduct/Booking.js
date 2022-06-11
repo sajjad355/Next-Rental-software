@@ -45,6 +45,7 @@ export default function BookProduct(props) {
         localStorage.removeItem("data");
         { saveProducts(dataObj) }
 
+        setBookModal(false);
         window.location.reload();
     }
 
