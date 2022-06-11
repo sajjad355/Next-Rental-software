@@ -11,6 +11,7 @@ import Paper from "@mui/material/Paper";
 import { InputGroup, FormControl } from "react-bootstrap";
 
 
+
 const ProductTable = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [products, setProducts] = useState(
@@ -18,7 +19,7 @@ const ProductTable = () => {
     );
 
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(8);
+    const [rowsPerPage, setRowsPerPage] = React.useState(7);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);

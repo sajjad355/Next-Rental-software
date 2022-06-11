@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, InputGroup } from "react-bootstrap";
 import { saveProducts } from "../../utils/localStroageProduct"
+import Swal from "sweetalert2";
+
 
 
 export default function ReturnProduct(props) {
@@ -11,7 +13,7 @@ export default function ReturnProduct(props) {
     const [amountPreview, setamountPreview] = useState("");
     const [repair, setRepair] = useState("");
     const [rentPeriod, setRentPeriod] = useState("");
-    const [returnModal, setReturnModal] = useState(true);
+    const [returnModal, setReturnModal] = useState(false);
     const [returnError, setReturnError] = useState("");
 
 
@@ -22,7 +24,8 @@ export default function ReturnProduct(props) {
     function toggleModalReturn() {
         setIsOpenReturn(!isOpenReturn);
         setReturnModal(!returnModal);
-        window.location.reload();
+        setAmount("");
+        setProduct("");
     }
 
     function toggleModalReturnValueFinal() {
@@ -41,8 +44,15 @@ export default function ReturnProduct(props) {
         }
         localStorage.removeItem("data");
         { saveProducts(dataObj) }
+        setReturnModal(!returnModal);
 
-        window.location.reload();
+        Swal.fire(
+            "Success!",
+            "Product Returned.",
+            "success"
+        ).then(function () {
+            window.location.reload(false);
+        });
     }
     function toggleModalReturnValue() {
         if (product && amount) {
@@ -66,7 +76,11 @@ export default function ReturnProduct(props) {
     }
 
     return (
-        <div className="App">
+        <div className="">
+
+            <div className="mb-5 book-return">
+                <Button onClick={() => setReturnModal(true)} className="return" variant="danger">Return</Button>
+            </div>
 
             {/* Return Product Initialize */}
             <Modal

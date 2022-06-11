@@ -280,7 +280,17 @@ color: white;
   .email{
       margin-top: -15px;
   }
-  .copy-right{
-    margin-top: -35px;
+  .footer{
+    margin-top: -20px;
   }
+#outer
+{
+    width:100%;
+    text-align: right;
+    margin-top: 7px;
+}
+.inner
+{
+    display: inline-block;
+}
 

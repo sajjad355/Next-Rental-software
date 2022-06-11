@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Modal, Form, Button, InputGroup } from "react-bootstrap";
 import { dayDifferenceCalculate } from "../../utils/dayDifferenceCalculate";
 import { saveProducts } from "../../utils/localStroageProduct"
+import Swal from "sweetalert2";
+
 
 
 
@@ -12,15 +14,17 @@ export default function BookProduct(props) {
     const [amountPreview, setamountPreview] = useState("");
     const [fromDate, setFromdate] = useState("");
     const [toDate, setToDate] = useState("");
-    const [bookModal, setBookModal] = useState(true);
+    const [bookModal, setBookModal] = useState(false);
     const [bookError, setBookError] = useState("");
 
     useEffect(() => {
     }, []);
 
     function toggleModal() {
+        setFromdate("");
+        setToDate("");
+        setProductBooking("");
         setBookModal(false);
-        window.location.reload();
     }
 
     function toggleModalBookingValueComplted() {
@@ -46,7 +50,13 @@ export default function BookProduct(props) {
         { saveProducts(dataObj) }
 
         setBookModal(false);
-        window.location.reload();
+        Swal.fire(
+            "Congratulations!",
+            "Product Booked.",
+            "success"
+        ).then(function () {
+            window.location.reload(false);
+        });
     }
 
     function toggleBookingValueCancel() {
@@ -84,7 +94,10 @@ export default function BookProduct(props) {
     }
     return (
 
-        <div className="App">
+        <div className="">
+            <div className="mb-5 book-return">
+                <Button onClick={() => setBookModal(true)} className="book">Book</Button>
+            </div>
 
             {/* Book Product Initialize */}
             <Modal

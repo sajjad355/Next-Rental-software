@@ -27,25 +27,24 @@ export default function DataTable(props) {
                     <TableView />
                 </ErrorBoundary>
             </div>
-            <div className="mb-5 book-return">
-                <Button onClick={toggleModal} className="book" data-testid="button">Book</Button>
-                <Button onClick={toggleModalReturn} className="return" variant="danger">Return</Button>
-            </div>
-            <div>
-                {isOpen ?
-                    <ErrorBoundary>
-                        <BookProduct status={isOpen} />
-                    </ErrorBoundary>
-                    : ""
-                }
-                {isOpenReturn ?
-                    <ErrorBoundary>
-                        <ReturnProduct status={isOpenReturn} />
-                    </ErrorBoundary> : ""}
 
+            <div>
+                <div id="outer">
+                    <div class="inner">
+                        <ErrorBoundary>
+                            <BookProduct status={isOpen} />
+                        </ErrorBoundary>
+                    </div>
+                    <div class="inner">
+                        <ErrorBoundary>
+                            <ReturnProduct status={isOpenReturn} />
+                        </ErrorBoundary>
+                    </div>
+                </div>
             </div>
+
             <div className="">
-                <p className="copy-right">©2022 Sajjadur Rahman</p>
+                <p className="footer">©2022 Sajjadur Rahman</p>
                 <p className="email">sajjadurrahman3434@gmail.com</p>
             </div>
         </div >
