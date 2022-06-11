@@ -74,7 +74,7 @@ export default function ReturnProduct(props) {
                 onRequestClose={toggleModalReturn}
                 contentLabel="My dialog"
             >
-                <Modal.Header>
+                <Modal.Header className="model-header">
                     <div><span className="book-product" >RETURN PRODUCT</span></div>
                 </Modal.Header>
 
@@ -144,7 +144,7 @@ export default function ReturnProduct(props) {
                 contentLabel="My dialog"
             >
 
-                <Modal.Header>
+                <Modal.Header className="model-header">
                     <span className="book-product"> RETURN A PRODUCT!</span>
                 </Modal.Header>
 

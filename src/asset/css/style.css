@@ -66,6 +66,7 @@ th{
 }
 .book{
     width: 85px;
+    background: #2621a0!important;
 }
 .return{
     margin-left: 5px;
@@ -115,7 +116,7 @@ th{
     font-family: "Lucida Console"; 
     height: 40px; 
     margin-bottom: 10px; 
-    background-color: #2621a0; 
+    background-color: #2621a0!important; 
     color: white;
 }
 .no-button{
@@ -145,8 +146,14 @@ th{
     font-family: "Lucida Console"; 
     height: 40px; 
     margin-bottom: 10px; 
-    background-color: #2621a0; 
+    background-color: #2621a0!important; 
     color: white;
+}
+.model-header{
+    /* background-color: #2621a0!important; */
+    background: #2621a0;
+    color:white 
+
 }
 .no-button-confirm{
     width: 50px; 
@@ -166,7 +173,7 @@ th{
     font-family: "Lucida Console";
     width: 150px;
     height: 40px; 
-    background-color: #2621a0;
+    background-color: #2621a0!important;
     color: white;
 }
 .success{
@@ -180,7 +187,7 @@ font-size: 18px;
 font-family: "Lucida Console"; 
 width: 120px; 
 height: 41px; 
-background: #2621a0; 
+background: #2621a0!important; 
 color: white; 
 }
 .to-margin{

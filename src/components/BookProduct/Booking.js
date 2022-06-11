@@ -92,7 +92,7 @@ export default function BookProduct(props) {
                 onRequestClose={toggleModal}
                 contentLabel="My dialog"
             >
-                <Modal.Header>
+                <Modal.Header className="model-header">
                     <div><span className="book-product" >BOOK A PRODUCT</span></div>
                 </Modal.Header>
 
@@ -169,7 +169,7 @@ export default function BookProduct(props) {
                 onRequestClose={toggleModalBookingValue}
                 contentLabel="My dialog"
             >
-                <Modal.Header>
+                <Modal.Header className="model-header">
                     <div><span className="book-product" >BOOK A PRODUCT</span></div>
                 </Modal.Header>
 
@@ -201,7 +201,7 @@ export default function BookProduct(props) {
                 onRequestClose={toggleModalBookingValueComplted}
                 contentLabel="My dialog"
             >
-                <Modal.Header>
+                <Modal.Header className="model-header">
                     <span className="congrats">CONGRATULATIONS!</span>
                 </Modal.Header>
 
