@@ -13,7 +13,6 @@ export default function BookProduct(props) {
     const [fromDate, setFromdate] = useState("");
     const [toDate, setToDate] = useState("");
     const [bookModal, setBookModal] = useState(true);
-    const [productId, setProductId] = useState("");
     const [bookError, setBookError] = useState("");
 
     useEffect(() => {
