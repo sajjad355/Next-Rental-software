@@ -35,7 +35,7 @@ export default function DataTable(props) {
                             <BookProduct status={isOpen} />
                         </ErrorBoundary>
                     </div>
-                    <div class="inner">
+                    <div class="inner return-button-home">
                         <ErrorBoundary>
                             <ReturnProduct status={isOpenReturn} />
                         </ErrorBoundary>

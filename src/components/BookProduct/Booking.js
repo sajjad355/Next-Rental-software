@@ -24,6 +24,7 @@ export default function BookProduct(props) {
         setFromdate("");
         setToDate("");
         setProductBooking("");
+        setBookError("");
         setBookModal(false);
     }
 

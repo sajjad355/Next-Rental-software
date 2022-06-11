@@ -25,6 +25,7 @@ export default function ReturnProduct(props) {
         setIsOpenReturn(!isOpenReturn);
         setReturnModal(!returnModal);
         setAmount("");
+        setReturnError("");
         setProduct("");
     }
 
