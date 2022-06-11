@@ -26,7 +26,7 @@ export default function DataTable(props) {
                 </ErrorBoundary>
             </div>
             <div className="mb-5 BookReturn">
-                <Button onClick={toggleModal} className="book" >Book</Button>
+                <Button onClick={toggleModal} className="book" data-testid="button">Book</Button>
                 <Button onClick={toggleModalReturn} className="return" variant="danger">Return</Button>
             </div>
             <div>

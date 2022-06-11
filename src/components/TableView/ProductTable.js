@@ -90,61 +90,67 @@ const ProductTable = () => {
                             </TableRow>
                         </TableHead>
 
-                        {products
-                            .filter((val) => {
-                                if (searchTerm === "") {
-                                    return val;
-                                } else if (
-                                    val.name.toLowerCase().includes(searchTerm.toLowerCase())
-                                ) {
-                                    return val;
-                                }
-                                return 0;
-                            })
-                            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            .map((val) => {
-                                return (
-                                    <TableBody key={val.code}>
-                                        <TableRowDesign name={val.name} mileage={val.mileage}>
-                                            <TableCellDesign component="" scope="row">
-                                                {val.name}
-                                            </TableCellDesign>
-                                            <TableCellDesign align="right">
-                                                {val.type}
-                                            </TableCellDesign>
-                                            <TableCellDesign align="right">
-                                                {val.availability ? <span className="success">Available</span> : <span className="required">Not Available</span>}
-                                            </TableCellDesign>
-                                            <TableCellDesign align="right">
-                                                {val.needing_repair ? <span className="required">Yes</span> : <span className="success">No</span>}
-                                            </TableCellDesign>
-                                            <TableCellDesign align="right">
-                                                {val.price}
-                                            </TableCellDesign>
-                                            <TableCellDesign align="right">
-                                                {val.durability}
-                                            </TableCellDesign>
-                                            <TableCellDesign align="right">
-                                                {val.mileage ? val.mileage : "N/A"}
-                                            </TableCellDesign>
-                                            <TableCellDesign align="right">
-                                                {val.minimum_rent_period ? val.minimum_rent_period : "N/A"}
-                                            </TableCellDesign>
-                                        </TableRowDesign>
-                                    </TableBody>
-                                );
-                            })}
+                        {
+                            products ? products
+                                .filter((val) => {
+                                    if (searchTerm === "") {
+                                        return val;
+                                    } else if (
+                                        val.name.toLowerCase().includes(searchTerm.toLowerCase())
+                                    ) {
+                                        return val;
+                                    }
+                                    return 0;
+                                })
+                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                .map((val) => {
+                                    return (
+                                        <TableBody key={val.code}>
+                                            <TableRowDesign name={val.name} mileage={val.mileage}>
+                                                <TableCellDesign component="" scope="row">
+                                                    {val.name}
+                                                </TableCellDesign>
+                                                <TableCellDesign align="right">
+                                                    {val.type}
+                                                </TableCellDesign>
+                                                <TableCellDesign align="right">
+                                                    {val.availability ? <span className="success">Available</span> : <span className="required">Not Available</span>}
+                                                </TableCellDesign>
+                                                <TableCellDesign align="right">
+                                                    {val.needing_repair ? <span className="required">Yes</span> : <span className="success">No</span>}
+                                                </TableCellDesign>
+                                                <TableCellDesign align="right">
+                                                    {val.price}
+                                                </TableCellDesign>
+                                                <TableCellDesign align="right">
+                                                    {val.durability}
+                                                </TableCellDesign>
+                                                <TableCellDesign align="right">
+                                                    {val.mileage ? val.mileage : "N/A"}
+                                                </TableCellDesign>
+                                                <TableCellDesign align="right">
+                                                    {val.minimum_rent_period ? val.minimum_rent_period : "N/A"}
+                                                </TableCellDesign>
+                                            </TableRowDesign>
+                                        </TableBody>
+                                    );
+                                }) : ""
+                        }
                     </Table>
                 </TableContainer>
-                <TablePagination
-                    rowsPerPageOptions={[5, 10, 20]}
-                    component="div"
-                    count={products.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                />
+                {
+                    products ?
+                        <TablePagination
+                            rowsPerPageOptions={[5, 10, 20]}
+                            component="div"
+                            count={products.length}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            onPageChange={handleChangePage}
+                            onRowsPerPageChange={handleChangeRowsPerPage}
+                        /> : ""
+                }
+
             </Paper>
         </>
     );
