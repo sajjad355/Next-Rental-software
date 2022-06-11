@@ -82,7 +82,7 @@ const ProductTable = () => {
                                 <TableCellDesign>Name</TableCellDesign>
                                 <TableCellDesign align="right">Type</TableCellDesign>
                                 <TableCellDesign align="right">Availability</TableCellDesign>
-                                <TableCellDesign align="right">Repair Needed</TableCellDesign>
+                                <TableCellDesign align="right">Repair</TableCellDesign>
                                 <TableCellDesign align="right">Price</TableCellDesign>
                                 <TableCellDesign align="right">Durability</TableCellDesign>
                                 <TableCellDesign align="right">Mileage</TableCellDesign>
