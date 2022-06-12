@@ -4,7 +4,6 @@
  */
 
 import React, { Component } from 'react';
-import log from 'loglevel';
 
 class ErrorBoundary extends Component {
     constructor(props) {

@@ -3,11 +3,10 @@
  * @email ${sajjadurrahman3434@gmail.com}
  */
 
-import Data from '../../../src/data/data.json'
 import ErrorBoundary from "../../utils/ErrorBoundary"
 import DataTable from "../../components/DataTable/DataTable"
 import { saveProducts } from "../../utils/localStroageProduct"
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 
 

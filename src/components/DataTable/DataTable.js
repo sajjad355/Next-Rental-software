@@ -3,8 +3,7 @@
  * @email ${sajjadurrahman3434@gmail.com}
  */
 
-import React, { useState, useEffect } from "react";
-import { Button, Table } from "react-bootstrap";
+import React, { useState } from "react";
 import BookProduct from '../BookProduct/Booking'
 import ReturnProduct from '../ReturnProduct/Return'
 import "../../asset/css/style.css"

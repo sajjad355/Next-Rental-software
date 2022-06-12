@@ -3,7 +3,7 @@
  * @email ${sajjadurrahman3434@gmail.com}
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal, Button, InputGroup } from "react-bootstrap";
 import { saveProducts } from "../../utils/localStroageProduct"
 import Swal from "sweetalert2";
@@ -24,9 +24,6 @@ export default function ReturnProduct(props) {
     const [returnError, setReturnError] = useState("");
 
 
-    useEffect(() => {
-        setReturnModal(props.status);
-    }, []);
 
     function toggleModalReturn() {
         setIsOpenReturn(!isOpenReturn);
@@ -51,7 +48,7 @@ export default function ReturnProduct(props) {
             }
         }
         removeProducts()
-        { saveProducts(dataObj) }
+        saveProducts(dataObj)
         setReturnModal(!returnModal);
 
         Swal.fire(

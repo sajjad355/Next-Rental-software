@@ -3,7 +3,7 @@
  * @email ${sajjadurrahman3434@gmail.com}
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -14,7 +14,6 @@ import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
 import { InputGroup, FormControl } from "react-bootstrap";
-import logo from "../../asset/images/logo.png"
 
 
 
@@ -22,7 +21,6 @@ import logo from "../../asset/images/logo.png"
 
 const ProductTable = (props) => {
     const [searchTerm, setSearchTerm] = useState("");
-    const [products, setProducts] = useState();
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(7);
@@ -35,11 +33,6 @@ const ProductTable = (props) => {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
-
-
-    useEffect(() => {
-        setProducts(props.data);
-    }, []);
 
     const TableCellDesign = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
@@ -150,11 +143,11 @@ const ProductTable = (props) => {
                     </Table>
                 </TableContainer>
                 {
-                    products ?
+                    props.data ?
                         <TablePagination
                             rowsPerPageOptions={[5, 10, 20]}
                             component="div"
-                            count={products.length}
+                            count={props.data.length}
                             rowsPerPage={rowsPerPage}
                             page={page}
                             onPageChange={handleChangePage}
