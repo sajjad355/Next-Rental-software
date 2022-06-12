@@ -15,21 +15,20 @@ import TableView from "../TableView/ProductTable"
 export default function DataTable(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenReturn, setIsOpenReturn] = useState(false);
+    const [data, setData] = useState(
+        JSON.parse(localStorage.getItem("data"))
+    );
 
-    useEffect(() => {
-    }, []);
+    function updateData() {
+        console.log(JSON.parse(localStorage.getItem("data")))
+        setData(JSON.parse(localStorage.getItem("data")))
+    }
 
-    function toggleModal() {
-        setIsOpen(true);
-    }
-    function toggleModalReturn() {
-        setIsOpenReturn(true);
-    }
     return (
         <div className="App">
             <div className="">
                 <ErrorBoundary>
-                    <TableView />
+                    <TableView data={data} />
                 </ErrorBoundary>
             </div>
 
@@ -37,12 +36,12 @@ export default function DataTable(props) {
                 <div id="outer">
                     <div class="inner">
                         <ErrorBoundary>
-                            <BookProduct status={isOpen} />
+                            <BookProduct updateData={updateData} status={isOpen} />
                         </ErrorBoundary>
                     </div>
                     <div class="inner return-button-home">
                         <ErrorBoundary>
-                            <ReturnProduct status={isOpenReturn} />
+                            <ReturnProduct status={isOpenReturn} updateData={updateData} />
                         </ErrorBoundary>
                     </div>
                 </div>

@@ -20,11 +20,9 @@ import logo from "../../asset/images/logo.png"
 
 
 
-const ProductTable = () => {
+const ProductTable = (props) => {
     const [searchTerm, setSearchTerm] = useState("");
-    const [products, setProducts] = useState(
-        JSON.parse(localStorage.getItem("data"))
-    );
+    const [products, setProducts] = useState();
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(7);
@@ -40,7 +38,7 @@ const ProductTable = () => {
 
 
     useEffect(() => {
-        setProducts(JSON.parse(localStorage.getItem("data")) || []);
+        setProducts(props.data);
     }, []);
 
     const TableCellDesign = styled(TableCell)(({ theme }) => ({
@@ -104,7 +102,7 @@ const ProductTable = () => {
                         </TableHead>
 
                         {
-                            products ? products
+                            props.data ? props.data
                                 .filter((val) => {
                                     if (searchTerm === "") {
                                         return val;

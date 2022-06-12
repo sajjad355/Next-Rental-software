@@ -57,7 +57,10 @@ export default function ReturnProduct(props) {
             "Product Returned.",
             "success"
         ).then(function () {
-            window.location.reload(false);
+            setAmount("");
+            setReturnError("");
+            setProduct("");
+            props.updateData();
         });
     }
     function toggleModalReturnValue() {

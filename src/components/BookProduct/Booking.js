@@ -12,7 +12,6 @@ import Swal from "sweetalert2";
 
 
 
-
 export default function BookProduct(props) {
     const [isOpenBookingValue, setIsOpenBookingvalue] = useState(false);
     const [isOpenBookingValueCompleted, setIsOpenBookingvalueCompleted] = useState(false);
@@ -23,6 +22,7 @@ export default function BookProduct(props) {
     const [bookModal, setBookModal] = useState(false);
     const [bookError, setBookError] = useState("");
 
+    console.log(props);
     useEffect(() => {
     }, []);
 
@@ -32,6 +32,7 @@ export default function BookProduct(props) {
         setProductBooking("");
         setBookError("");
         setBookModal(false);
+
     }
 
     function toggleModalBookingValueComplted() {
@@ -62,7 +63,12 @@ export default function BookProduct(props) {
             "Product Booked.",
             "success"
         ).then(function () {
-            window.location.reload(false);
+            setFromdate("");
+            setToDate("");
+            setProductBooking("");
+            setBookError("");
+            props.updateData();
+
         });
     }
 
