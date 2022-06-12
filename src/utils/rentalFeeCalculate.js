@@ -10,7 +10,6 @@ export const rentalFeeCalculate = (price, dayDiff) => {
   if (!isNaN(+dayDiff) && !isNaN(+price)) {
     try {
       rentalFee = dayDiff * price;
-      console.log(rentalFee)
     } catch (err) {
       ErrorLog(err);
     }
