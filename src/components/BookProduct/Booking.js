@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Form, Button, InputGroup } from "react-bootstrap";
 import { dayDifferenceCalculate } from "../../utils/dayDifferenceCalculate";
+import { rentalFeeCalculate } from "../../utils/rentalFeeCalculate";
 import { saveProducts } from "../../utils/localStroageProduct"
 import Swal from "sweetalert2";
 
@@ -82,8 +83,10 @@ export default function BookProduct(props) {
                 if (dayDiff >= a[0].minimum_rent_period && a[0].price) {
                     setIsOpenBookingvalue(!isOpenBookingValue);
                     setBookError("");
+                    const rentalFee = rentalFeeCalculate(a[0].price, dayDiff);
+
                     setamountPreview(
-                        a[0].price * dayDiff
+                        rentalFee
                     );
 
                 }
