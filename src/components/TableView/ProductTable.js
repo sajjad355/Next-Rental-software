@@ -88,8 +88,8 @@ const ProductTable = () => {
             </div>
 
             <Paper sx={{ width: "100%", overflow: "hidden" }} className="table-margin">
-                <TableContainer sx={{ maxHeight: 950 }}>
-                    <Table id="rentaldata">
+                <TableContainer sx={{ maxHeight: '450px' }}>
+                    <Table id="rentaldata" stickyHeader>
                         <TableHead className="table-header">
                             <TableRow className="table-header">
                                 <TableCellDesign>Name</TableCellDesign>
