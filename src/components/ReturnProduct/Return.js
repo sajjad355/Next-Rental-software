@@ -7,6 +7,8 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button, InputGroup } from "react-bootstrap";
 import { saveProducts } from "../../utils/localStroageProduct"
 import Swal from "sweetalert2";
+import { getProducts } from "../../utils/localStroageProduct"
+import { removeProducts } from "../../utils/localStroageProduct"
 
 
 
@@ -40,7 +42,7 @@ export default function ReturnProduct(props) {
         const code = product.split('/').pop();
 
 
-        var dataObj = JSON.parse(localStorage.getItem("data"));
+        var dataObj = getProducts();
         for (var i = 0; i < dataObj.length; i++) {
             if (dataObj[i].code === code) {
                 dataObj[i].availability = true;
@@ -48,7 +50,7 @@ export default function ReturnProduct(props) {
                 break;
             }
         }
-        localStorage.removeItem("data");
+        removeProducts()
         { saveProducts(dataObj) }
         setReturnModal(!returnModal);
 
@@ -66,9 +68,9 @@ export default function ReturnProduct(props) {
     function toggleModalReturnValue() {
         if (product && amount) {
             setIsOpenReturnvalue(!isOpenReturnValue);
-            var a = JSON.parse(localStorage.getItem("data")).filter(item => item.name + "/" + item.code === product)
+            var a = getProducts().filter(item => item.name + "/" + item.code === product)
             const code = product.split('/').pop();
-            var dataObj = JSON.parse(localStorage.getItem("data"));
+            var dataObj = getProducts();
             for (var i = 0; i < dataObj.length; i++) {
                 if (dataObj[i].code === code) {
                     setamountPreview(dataObj[i].returnPrice)
@@ -115,8 +117,8 @@ export default function ReturnProduct(props) {
                             <option value="" disabled>-- Product --</option>
 
                             {
-                                localStorage.getItem("data") ?
-                                    JSON.parse(localStorage.getItem("data")).filter((c) => c.availability === false).map((val) => (
+                                getProducts() ?
+                                    getProducts().filter((c) => c.availability === false).map((val) => (
                                         <option text={val.code}>
                                             {val.name}/{val.code}
                                         </option>
@@ -127,7 +129,7 @@ export default function ReturnProduct(props) {
 
                     {/* Information Start */}
                     {
-                        (localStorage.getItem("data")) ? JSON.parse(localStorage.getItem("data")).filter(allProduct => allProduct.name + "/" + allProduct.code === product).map(products => (
+                        getProducts() ? getProducts().filter(allProduct => allProduct.name + "/" + allProduct.code === product).map(products => (
                             <p className="product-desc">
                                 <p>Name:&nbsp;{products.name}</p>
                                 <p>Rental Period:&nbsp;{products.minimum_rent_period}</p>

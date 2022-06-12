@@ -20,7 +20,6 @@ export default function DataTable(props) {
     );
 
     function updateData() {
-        console.log(JSON.parse(localStorage.getItem("data")))
         setData(JSON.parse(localStorage.getItem("data")))
     }
 

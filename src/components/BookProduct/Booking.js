@@ -9,6 +9,9 @@ import { dayDifferenceCalculate } from "../../utils/dayDifferenceCalculate";
 import { rentalFeeCalculate } from "../../utils/rentalFeeCalculate";
 import { saveProducts } from "../../utils/localStroageProduct"
 import Swal from "sweetalert2";
+import { getProducts } from "../../utils/localStroageProduct"
+import { removeProducts } from "../../utils/localStroageProduct"
+
 
 
 
@@ -22,7 +25,6 @@ export default function BookProduct(props) {
     const [bookModal, setBookModal] = useState(false);
     const [bookError, setBookError] = useState("");
 
-    console.log(props);
     useEffect(() => {
     }, []);
 
@@ -46,7 +48,7 @@ export default function BookProduct(props) {
         const code = productBooking.split('/').pop();
 
 
-        var dataObj = JSON.parse(localStorage.getItem("data"));
+        var dataObj = getProducts();
         for (var i = 0; i < dataObj.length; i++) {
             if (dataObj[i].code === code) {
                 dataObj[i].availability = false;
@@ -54,8 +56,8 @@ export default function BookProduct(props) {
                 break;
             }
         }
-        localStorage.removeItem("data");
-        { saveProducts(dataObj) }
+        removeProducts()
+        saveProducts(dataObj)
 
         setBookModal(false);
         Swal.fire(
@@ -77,7 +79,7 @@ export default function BookProduct(props) {
     }
     function toggleModalBookingValue() {
         if (productBooking && fromDate && toDate) {
-            var a = JSON.parse(localStorage.getItem("data")).filter(item => item.name + "/" + item.code === productBooking)
+            var a = getProducts().filter(item => item.name + "/" + item.code === productBooking)
             const date1 = new Date(toDate);
             const date2 = new Date(fromDate);
             const dayDiff = dayDifferenceCalculate(date1, date2);
@@ -139,7 +141,7 @@ export default function BookProduct(props) {
                             <option value="" disabled>-- Product --</option>
 
                             {
-                                localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")).filter((c) => c.availability === true).map((val) => (
+                                getProducts() ? getProducts().filter((c) => c.availability === true).map((val) => (
                                     <option text={val.code}>
                                         {val.name}/{val.code}
                                     </option>
@@ -150,7 +152,7 @@ export default function BookProduct(props) {
 
                     {/* Information Start */}
                     {
-                        localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")).filter(product => product.name + "/" + product.code === productBooking).map(products => (
+                        getProducts() ? getProducts().filter(product => product.name + "/" + product.code === productBooking).map(products => (
                             <p className="product-desc">
                                 <p>Name:&nbsp;{products.name}</p>
                                 <p>Rental Period:&nbsp;{products.minimum_rent_period}</p>
