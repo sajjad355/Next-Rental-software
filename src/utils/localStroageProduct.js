@@ -1,3 +1,8 @@
+/**
+ * @author ${Sajjadur Rahman}
+ * @email ${sajjadurrahman3434@gmail.com}
+ */
+
 import Data from "../data/data.json"
 import { ErrorLog } from "../helper/log";
 

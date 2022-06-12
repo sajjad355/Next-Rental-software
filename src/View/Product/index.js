@@ -1,3 +1,8 @@
+/**
+ * @author ${Sajjadur Rahman}
+ * @email ${sajjadurrahman3434@gmail.com}
+ */
+
 import Data from '../../../src/data/data.json'
 import ErrorBoundary from "../../utils/ErrorBoundary"
 import DataTable from "../../components/DataTable/DataTable"

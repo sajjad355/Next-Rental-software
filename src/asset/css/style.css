@@ -85,6 +85,7 @@ th{
     margin-right: 20px;
     padding-top: 50px;
 }
+
 .required{
     color:red;
 }
@@ -294,10 +295,12 @@ color: white;
 {
     display: inline-block;
 }
-.image{
-    height:90px;
-    margin-bottom: 30px;
-    margin-left: 20px;
+.title{
+margin-top: 70px;
+font-size: 20px;
+margin-left: 20px;
+color: black;
+font-weight: bold;
 }
 .return-button-home{
     margin-left: -20px;

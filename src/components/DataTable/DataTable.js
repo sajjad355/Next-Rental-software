@@ -1,3 +1,8 @@
+/**
+ * @author ${Sajjadur Rahman}
+ * @email ${sajjadurrahman3434@gmail.com}
+ */
+
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
 import BookProduct from '../BookProduct/Booking'

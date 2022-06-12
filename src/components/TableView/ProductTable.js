@@ -1,3 +1,8 @@
+/**
+ * @author ${Sajjadur Rahman}
+ * @email ${sajjadurrahman3434@gmail.com}
+ */
+
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -58,7 +63,7 @@ const ProductTable = () => {
     return (
         <>
             <div className="float-left">
-                <img src={logo} className="image"></img>
+                <p className="title">RENTAL LEDGER BOOK</p>
             </div>
 
             <div>
@@ -82,7 +87,7 @@ const ProductTable = () => {
                 </span>
             </div>
 
-            <Paper sx={{ width: "100%", overflow: "hidden" }}>
+            <Paper sx={{ width: "100%", overflow: "hidden" }} className="table-margin">
                 <TableContainer sx={{ maxHeight: 950 }}>
                     <Table id="rentaldata">
                         <TableHead className="table-header">

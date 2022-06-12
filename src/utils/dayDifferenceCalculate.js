@@ -1,3 +1,8 @@
+/**
+ * @author ${Sajjadur Rahman}
+ * @email ${sajjadurrahman3434@gmail.com}
+ */
+
 import { ErrorLog } from "../helper/log";
 
 export const dayDifferenceCalculate = (endDate, startDate) => {
