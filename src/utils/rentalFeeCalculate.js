@@ -6,10 +6,10 @@
 import { ErrorLog } from "../helper/log";
 
 export const rentalFeeCalculate = (price, dayDiff) => {
-  let rentalFee = 0;
-  if (!isNaN(+dayDiff) && !isNaN(+price)) {
+  let result = 0;
+  if (dayDiff && price) {
     try {
-      rentalFee = dayDiff * price;
+      result = dayDiff * price;
     } catch (err) {
       ErrorLog(err);
     }
@@ -18,5 +18,5 @@ export const rentalFeeCalculate = (price, dayDiff) => {
     throw new Error("rentalFeeCalculation(): dayDiff or price is missing");
   }
 
-  return rentalFee;
+  return result;
 };

@@ -6,10 +6,10 @@
 import { ErrorLog } from "../helper/log";
 
 export const dayDifferenceCalculate = (endDate, startDate) => {
-    let dayDiff = 0;
-    if (!isNaN(+endDate) && !isNaN(+startDate)) {
+    let result = 0;
+    if (endDate && startDate) {
         try {
-            dayDiff = (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
+            result = (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
 
         } catch (err) {
             ErrorLog(err);
@@ -21,5 +21,5 @@ export const dayDifferenceCalculate = (endDate, startDate) => {
         );
     }
 
-    return dayDiff;
+    return result;
 };

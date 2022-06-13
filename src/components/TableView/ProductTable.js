@@ -20,18 +20,18 @@ import { InputGroup, FormControl } from "react-bootstrap";
 
 
 const ProductTable = (props) => {
-    const [searchTerm, setSearchTerm] = useState("");
+    const [searchVal, setSearchVal] = useState("");
 
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(7);
+    const [pageNo, setPageNo] = React.useState(0);
+    const [dataPerPage, setDataPerPage] = React.useState(7);
 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
+    const handleChangePageNo = (event, newPage) => {
+        setPageNo(newPage);
     };
 
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(+event.target.value);
-        setPage(0);
+    const handleChangeDataPerPage = (event) => {
+        setDataPerPage(+event.target.value);
+        setPageNo(0);
     };
 
     const TableCellDesign = styled(TableCell)(({ theme }) => ({
@@ -70,7 +70,7 @@ const ProductTable = (props) => {
                                 aria-label="Search"
                                 aria-describedby="basic-addon1"
                                 onChange={(e) => {
-                                    setSearchTerm(e.target.value);
+                                    setSearchVal(e.target.value);
                                 }}
                             />
                         </InputGroup>
@@ -80,7 +80,7 @@ const ProductTable = (props) => {
 
             <Paper sx={{ width: "100%", overflow: "hidden" }} className="table-margin">
                 <TableContainer sx={{ maxHeight: '450px' }}>
-                    <Table id="rentaldata" stickyHeader>
+                    <Table stickyHeader>
                         <TableHead className="table-header">
                             <TableRow className="table-header">
                                 <TableCellDesign>Name</TableCellDesign>
@@ -96,44 +96,44 @@ const ProductTable = (props) => {
 
                         {
                             props.data ? props.data
-                                .filter((val) => {
-                                    if (searchTerm === "") {
-                                        return val;
+                                .filter((value) => {
+                                    if (searchVal === "") {
+                                        return value;
                                     } else if (
-                                        val.name.toLowerCase().includes(searchTerm.toLowerCase())
+                                        value.name.toLowerCase().includes(searchVal.toLowerCase())
                                     ) {
-                                        return val;
+                                        return value;
                                     }
                                     return 0;
                                 })
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((val) => {
+                                .slice(pageNo * dataPerPage, pageNo * dataPerPage + dataPerPage)
+                                .map((value) => {
                                     return (
-                                        <TableBody key={val.code}>
-                                            <TableRowDesign name={val.name} mileage={val.mileage}>
-                                                <TableCellDesign component="" scope="row">
-                                                    {val.name}
+                                        <TableBody>
+                                            <TableRowDesign>
+                                                <TableCellDesign>
+                                                    {value.name}
                                                 </TableCellDesign>
                                                 <TableCellDesign align="right">
-                                                    {val.type}
+                                                    {value.type}
                                                 </TableCellDesign>
                                                 <TableCellDesign align="right">
-                                                    {val.availability ? <span className="success">Available</span> : <span className="required">Not Available</span>}
+                                                    {value.availability ? <span className="success">Available</span> : <span className="required">Not Available</span>}
                                                 </TableCellDesign>
                                                 <TableCellDesign align="right">
-                                                    {val.needing_repair ? <span className="required">Yes</span> : <span className="success">No</span>}
+                                                    {value.needing_repair ? <span className="required">Yes</span> : <span className="success">No</span>}
                                                 </TableCellDesign>
                                                 <TableCellDesign align="right">
-                                                    {val.price}
+                                                    {value.price}
                                                 </TableCellDesign>
                                                 <TableCellDesign align="right">
-                                                    {val.durability}
+                                                    {value.durability}
                                                 </TableCellDesign>
                                                 <TableCellDesign align="right">
-                                                    {val.mileage ? val.mileage : "N/A"}
+                                                    {value.mileage ? value.mileage : "N/A"}
                                                 </TableCellDesign>
                                                 <TableCellDesign align="right">
-                                                    {val.minimum_rent_period ? val.minimum_rent_period : "N/A"}
+                                                    {value.minimum_rent_period ? value.minimum_rent_period : "N/A"}
                                                 </TableCellDesign>
                                             </TableRowDesign>
                                         </TableBody>
@@ -148,10 +148,10 @@ const ProductTable = (props) => {
                             rowsPerPageOptions={[5, 10, 20]}
                             component="div"
                             count={props.data.length}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            onPageChange={handleChangePage}
-                            onRowsPerPageChange={handleChangeRowsPerPage}
+                            rowsPerPage={dataPerPage}
+                            page={pageNo}
+                            onPageChange={handleChangePageNo}
+                            onRowsPerPageChange={handleChangeDataPerPage}
                         /> : ""
                 }
 
