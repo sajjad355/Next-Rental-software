@@ -44,12 +44,6 @@ const ProductTable = (props) => {
         },
     }));
 
-    const TableRowDesign = styled(TableRow)(({ theme }) => ({
-        "&:nth-of-type(odd)": {
-            backgroundColor: theme.palette.action.hover,
-        },
-
-    }));
 
     return (
         <>
@@ -78,8 +72,8 @@ const ProductTable = (props) => {
                 </span>
             </div>
 
-            <Paper sx={{ width: "100%", overflow: "hidden" }} className="table-margin">
-                <TableContainer sx={{ maxHeight: '450px' }}>
+            <Paper className="table-margin">
+                <TableContainer className="table-container">
                     <Table stickyHeader>
                         <TableHead className="table-header">
                             <TableRow className="table-header">
@@ -109,33 +103,31 @@ const ProductTable = (props) => {
                                 .slice(pageNo * dataPerPage, pageNo * dataPerPage + dataPerPage)
                                 .map((value) => {
                                     return (
-                                        <TableBody>
-                                            <TableRowDesign>
-                                                <TableCellDesign>
-                                                    {value.name}
-                                                </TableCellDesign>
-                                                <TableCellDesign align="right">
-                                                    {value.type}
-                                                </TableCellDesign>
-                                                <TableCellDesign align="right">
-                                                    {value.availability ? <span className="success">Available</span> : <span className="required">Not Available</span>}
-                                                </TableCellDesign>
-                                                <TableCellDesign align="right">
-                                                    {value.needing_repair ? <span className="required">Yes</span> : <span className="success">No</span>}
-                                                </TableCellDesign>
-                                                <TableCellDesign align="right">
-                                                    {value.price}
-                                                </TableCellDesign>
-                                                <TableCellDesign align="right">
-                                                    {value.durability}
-                                                </TableCellDesign>
-                                                <TableCellDesign align="right">
-                                                    {value.mileage ? value.mileage : "N/A"}
-                                                </TableCellDesign>
-                                                <TableCellDesign align="right">
-                                                    {value.minimum_rent_period ? value.minimum_rent_period : "N/A"}
-                                                </TableCellDesign>
-                                            </TableRowDesign>
+                                        <TableBody className="table-row">
+                                            <TableCellDesign>
+                                                {value.name}
+                                            </TableCellDesign>
+                                            <TableCellDesign align="right">
+                                                {value.type}
+                                            </TableCellDesign>
+                                            <TableCellDesign align="right">
+                                                {value.availability ? <span className="success">Available</span> : <span className="required">Not Available</span>}
+                                            </TableCellDesign>
+                                            <TableCellDesign align="right">
+                                                {value.needing_repair ? <span className="required">Yes</span> : <span className="success">No</span>}
+                                            </TableCellDesign>
+                                            <TableCellDesign align="right">
+                                                {value.price}
+                                            </TableCellDesign>
+                                            <TableCellDesign align="right">
+                                                {value.durability}
+                                            </TableCellDesign>
+                                            <TableCellDesign align="right">
+                                                {value.mileage ? value.mileage : "N/A"}
+                                            </TableCellDesign>
+                                            <TableCellDesign align="right">
+                                                {value.minimum_rent_period ? value.minimum_rent_period : "N/A"}
+                                            </TableCellDesign>
                                         </TableBody>
                                     );
                                 }) : ""

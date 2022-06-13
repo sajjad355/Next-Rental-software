@@ -305,4 +305,14 @@ font-weight: bold;
 .return-button-home{
     margin-left: -20px;
 }
+.table-margin{
+    width: 100%;
+    overflow: hidden;
+}
+.table-row{
+    background: rgb(242, 242, 242)!important;
+}
+.table-container{
+    max-height: 450px;
+}
 
