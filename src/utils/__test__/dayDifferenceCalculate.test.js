@@ -24,13 +24,12 @@ describe("date difference", () => {
         expect(testData).toEqual(4);
     });
 
-    test("Error thow check", () => {
-        const t = () => {
-            throw new Error(
-                "dayDifferenceCalculate(): Date is not valid"
-            );
-        };
-
-        expect(t).toThrow(Error);
+    // Error case for startDate > endDate
+    test("10 may - 11 may = 4", () => {
+        const testData = dayDifferenceCalculate(
+            new Date(`Thu May 10 2022 10:10:10 GMT+0600 (Bangladesh Standard Time)`),
+            new Date(`Tue May 11 2022 10:10:10 GMT+0600 (Bangladesh Standard Time)`)
+        );
+        expect(testData).toBeLessThan(1);
     });
 });

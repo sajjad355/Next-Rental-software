@@ -7,7 +7,7 @@ import { ErrorLog } from "../helper/log";
 
 export const dayDifferenceCalculate = (toDate, fromDate) => {
     let result = 0;
-    if (toDate && fromDate) {
+    if (!isNaN(toDate) && !isNaN(fromDate)) {
         try {
             result = (toDate.getTime() - fromDate.getTime()) / (1000 * 3600 * 24);
 
