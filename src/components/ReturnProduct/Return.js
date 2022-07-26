@@ -43,7 +43,16 @@ export default function ReturnProduct(props) {
         for (var i = 0; i < dataObj.length; i++) {
             if (dataObj[i].code === code) {
                 dataObj[i].availability = true;
-                dataObj[i].mileage = dataObj[i].mileage === null ? amount : parseInt(dataObj[i].mileage) + parseInt(amount);
+                dataObj[i].mileage = dataObj[i].mileage === null ? parseInt(amount) + dataObj[i].returnPrice / dataObj[i].price * 10 : parseInt(dataObj[i].mileage) + parseInt(amount) + dataObj[i].returnPrice / dataObj[i].price * 10;
+
+                if (dataObj[i].type === "plain") {
+                    dataObj[i].durability = parseInt(dataObj[i].durability) - 1;
+                }
+
+                if (dataObj[i].type === "meter") {
+                    dataObj[i].durability = parseInt(dataObj[i].durability) - 2;
+                    dataObj[i].mileage = dataObj[i].mileage - Math.floor((2 * parseInt(amount)) / 10)
+                }
                 break;
             }
         }
