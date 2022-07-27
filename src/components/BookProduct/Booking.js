@@ -3,7 +3,7 @@
  * @email ${sajjadurrahman3434@gmail.com}
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal, Form, Button, InputGroup } from "react-bootstrap";
 import { dayDifferenceCalculate } from "../../utils/dayDifferenceCalculate";
 import { rentalFeeCalculate } from "../../utils/rentalFeeCalculate";
@@ -25,9 +25,6 @@ export default function BookProduct(props) {
     const [bookModal, setBookModal] = useState(false);
     const [bookError, setBookError] = useState("");
 
-    useEffect(() => {
-    }, []);
-
     function toggleModal() {
         setFromdate("");
         setToDate("");
@@ -48,14 +45,20 @@ export default function BookProduct(props) {
         const code = productBooking.split('/').pop();
 
 
-        var dataObj = getProducts();
-        for (var i = 0; i < dataObj.length; i++) {
-            if (dataObj[i].code === code) {
-                dataObj[i].availability = false;
-                dataObj[i].returnPrice = amountPreview;
-                break;
-            }
+        let dataObj = getProducts();
+
+        try {
+            dataObj.forEach(product => {
+                if (product.code === code) {
+                    product.availability = false;
+                    product.returnPrice = amountPreview;
+                    throw 'Break';
+                }
+            })
+        } catch (e) {
+            if (e !== 'Break') throw e
         }
+
         removeProducts()
         saveProducts(dataObj)
 
@@ -79,7 +82,7 @@ export default function BookProduct(props) {
     }
     function toggleModalBookingValue() {
         if (productBooking && fromDate && toDate) {
-            var a = getProducts().filter(item => item.name + "/" + item.code === productBooking)
+            let product = getProducts().filter(item => item.name + "/" + item.code === productBooking)
             const date1 = new Date(toDate);
             const date2 = new Date(fromDate);
             const dayDiff = dayDifferenceCalculate(date1, date2);
@@ -88,10 +91,10 @@ export default function BookProduct(props) {
                 setIsOpenBookingvalue(isOpenBookingValue);
             }
             else {
-                if (dayDiff >= a[0].minimum_rent_period && a[0].price) {
+                if (dayDiff >= product[0].minimum_rent_period && product[0].price) {
                     setIsOpenBookingvalue(!isOpenBookingValue);
                     setBookError("");
-                    const rentalFee = rentalFeeCalculate(a[0].price, dayDiff);
+                    const rentalFee = rentalFeeCalculate(product[0].price, dayDiff);
 
                     setamountPreview(
                         rentalFee
@@ -99,7 +102,7 @@ export default function BookProduct(props) {
 
                 }
                 else {
-                    setBookError("You have to Rent this for minumum " + a[0].minimum_rent_period + " Days")
+                    setBookError("You have to Rent this for minumum " + product[0].minimum_rent_period + " Days")
 
                 }
             }

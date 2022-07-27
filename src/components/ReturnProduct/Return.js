@@ -18,8 +18,6 @@ export default function ReturnProduct(props) {
     const [product, setProduct] = useState("");
     const [amount, setAmount] = useState("");
     const [amountPreview, setamountPreview] = useState("");
-    const [repair, setRepair] = useState("");
-    const [rentPeriod, setRentPeriod] = useState("");
     const [returnModal, setReturnModal] = useState(false);
     const [returnError, setReturnError] = useState("");
 
@@ -39,23 +37,29 @@ export default function ReturnProduct(props) {
         const code = product.split('/').pop();
 
 
-        var dataObj = getProducts();
-        for (var i = 0; i < dataObj.length; i++) {
-            if (dataObj[i].code === code) {
-                dataObj[i].availability = true;
-                dataObj[i].mileage = dataObj[i].mileage === null ? parseInt(amount) + dataObj[i].returnPrice / dataObj[i].price * 10 : parseInt(dataObj[i].mileage) + parseInt(amount) + dataObj[i].returnPrice / dataObj[i].price * 10;
+        let dataObj = getProducts();
 
-                if (dataObj[i].type === "plain") {
-                    dataObj[i].durability = parseInt(dataObj[i].durability) - (dataObj[i].returnPrice / dataObj[i].price) * 1;
-                }
+        try {
+            dataObj.forEach(product => {
+                if (product.code === code) {
+                    product.availability = true;
+                    product.mileage = product.mileage === null ? parseInt(amount) + product.returnPrice / product.price * 10 : parseInt(product.mileage) + parseInt(amount) + product.returnPrice / product.price * 10;
 
-                if (dataObj[i].type === "meter") {
-                    dataObj[i].durability = parseInt(dataObj[i].durability) - (dataObj[i].returnPrice / dataObj[i].price) * 2;
-                    dataObj[i].mileage = dataObj[i].mileage - Math.floor((2 * parseInt(amount)) / 10)
+                    if (product.type === "plain") {
+                        product.durability = parseInt(product.durability) - (product.returnPrice / product.price) * 1;
+                    }
+
+                    if (product.type === "meter") {
+                        product.durability = parseInt(product.durability) - (product.returnPrice / product.price) * 2;
+                        product.mileage = product.mileage - Math.floor((2 * parseInt(amount)) / 10)
+                    }
+                    throw 'Break';
                 }
-                break;
-            }
+            })
+        } catch (e) {
+            if (e !== 'Break') throw e
         }
+
         removeProducts()
         saveProducts(dataObj)
         setReturnModal(!returnModal);
@@ -74,17 +78,19 @@ export default function ReturnProduct(props) {
     function toggleModalReturnValue() {
         if (product && amount) {
             setIsOpenReturnvalue(!isOpenReturnValue);
-            var a = getProducts().filter(item => item.name + "/" + item.code === product)
             const code = product.split('/').pop();
-            var dataObj = getProducts();
-            for (var i = 0; i < dataObj.length; i++) {
-                if (dataObj[i].code === code) {
-                    setamountPreview(dataObj[i].returnPrice)
-                    break;
-                }
+            let dataObj = getProducts();
+
+            try {
+                dataObj.forEach(product => {
+                    if (product.code === code) {
+                        setamountPreview(product.returnPrice)
+                        throw 'Break';
+                    }
+                })
+            } catch (e) {
+                if (e !== 'Break') throw e
             }
-            setRepair(a[0].needing_repair === "false" ? "No" : "Yes");
-            setRentPeriod(a[0].minimum_rent_period);
             setReturnError("")
         }
         else {
